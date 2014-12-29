@@ -1,7 +1,14 @@
 import {Router} from 'aurelia-router';
 
 export class App {	
-	doWork(){
-		let test = 3;
-	}	
+	static inject() { return [Router]; }
+	constructor(router){
+		this.router = router;
+		this.router.configure(config => {
+			config.title = 'Gusten Movie DB';
+			config.map([
+				{ route: ['', 'start'], moduleId: 'modules/start', nav: false, title: 'Start'}
+			]);
+		});
+	}
 }
