@@ -1,0 +1,33 @@
+{
+  "name": "aurelia-tinkering",
+  "version": "0.1.0",
+  "description": "Just me tinkering around with Aurelia",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/martingust/aurelia-tinkering.git"
+  },
+  "keywords": [
+    "aurelia"
+  ],
+  "author": "Martin Gustafsson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/martingust/aurelia-tinkering/issues"
+  },
+  "homepage": "https://github.com/martingust/aurelia-tinkering",
+  "dependencies": {},
+  "jspm": {
+    "dependencies": {
+      "bootstrapper": "github:aurelia/bootstrapper@^0.5.2"
+    }
+  },
+  "devDependencies": {
+    "gulp": "^3.8.10",
+    "gulp-6to5": "^2.0.0",
+    "gulp-serve": "^0.3.0"
+  }
+}
