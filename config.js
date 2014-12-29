@@ -10,6 +10,7 @@ System.config({
 System.config({
   "map": {
     "aurelia-bootstrapper": "github:aurelia/bootstrapper@0.5.2",
+    "bootstrap": "github:twbs/bootstrap@3.3.1",
     "github:aurelia/binding@0.1.2": {
       "aurelia-metadata": "github:aurelia/metadata@0.1.1",
       "aurelia-task-queue": "github:aurelia/task-queue@0.1.1"
@@ -87,6 +88,10 @@ System.config({
       "aurelia-path": "github:aurelia/path@0.3.0",
       "aurelia-task-queue": "github:aurelia/task-queue@0.1.1",
       "es6-shim": "github:paulmillr/es6-shim@0.21.1"
+    },
+    "github:twbs/bootstrap@3.3.1": {
+      "css": "github:systemjs/plugin-css@0.1.0",
+      "jquery": "github:components/jquery@2.1.3"
     }
   }
 });
