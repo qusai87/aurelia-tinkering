@@ -1,17 +1,15 @@
 "use strict";
 
-var HttpClient = require("http-client").HttpClient;
-var AppConfig = require("../app-config").AppConfig;
-var Start = function Start(httpClient, appConfig) {
+var DiscoverRepository = require("../repositories/discoverRepository").DiscoverRepository;
+var Start = function Start(discoverRepository) {
   this.popularMovies = [];
   this.highestRatedMovies = [];
-  this.httpClient = httpClient;
   this.apiKey = "";
-  this.config = appConfig;
+  this.discoverRepository = discoverRepository;
 };
 
 Start.inject = function () {
-  return [HttpClient, AppConfig];
+  return [DiscoverRepository];
 };
 
 Start.prototype.activate = function () {
@@ -27,29 +25,15 @@ Start.prototype.saveApiKey = function () {
 
 Start.prototype.loadPopularMovies = function () {
   var _this = this;
-  var url = "" + this.config.baseUrl + "/discover/movie?sort_by=popularity.desc&api_key=" + this.apiKey;
-
-  if (!this.apiKey) {
-    return;
-  }
-
-  this.httpClient.get(url).then(function (x) {
-    var response = JSON.parse(x.response);
-    _this.popularMovies = response.results;
+  this.discoverRepository.getPopularMovies().then(function (movies) {
+    return _this.popularMovies = movies;
   });
 };
 
 Start.prototype.loadHighestRatedMovies = function () {
   var _this2 = this;
-  var url = "" + this.config.baseUrl + "/discover/movie?certification_country=US&certification=R&sort_by=vote_average.desc&api_key=" + this.apiKey;
-
-  if (!this.apiKey) {
-    return;
-  }
-
-  this.httpClient.get(url).then(function (x) {
-    var response = JSON.parse(x.response);
-    _this2.highestRatedMovies = response.results;
+  this.discoverRepository.getHighestRatedMovies().then(function (movies) {
+    return _this2.highestRatedMovies = movies;
   });
 };
 

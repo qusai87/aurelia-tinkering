@@ -5,15 +5,15 @@ var _prototypeProperties = function (child, staticProps, instanceProps) {
   if (instanceProps) Object.defineProperties(child.prototype, instanceProps);
 };
 
-var AppConfig = function AppConfig() {};
+var Settings = function Settings() {};
 
-_prototypeProperties(AppConfig, null, {
+_prototypeProperties(Settings, null, {
   baseUrl: {
     get: function () {
-      return "api.themoviedb.org/3/";
+      return "https://api.themoviedb.org/3";
     },
     enumerable: true
   }
 });
 
-exports.AppConfig = AppConfig;
+exports.Settings = Settings;

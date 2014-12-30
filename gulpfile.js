@@ -4,12 +4,20 @@ var serve = require('gulp-serve');
 var plumber = require('gulp-plumber');
 var browserSync = require('browser-sync');
 var changed = require('gulp-changed');
+var del = require('del');
+var vinylPaths = require('vinyl-paths');
+var runSequence = require('run-sequence');
 
 var path = {
 	js: 'src/**/*.js',
 	html: 'src/**/*.html',
 	output: 'dist/'
 };
+
+gulp.task('clean', function(){
+	return gulp.src([path.output])
+			.pipe(vinylPaths(del));
+});
 
 gulp.task('build-js', function(){
 	return gulp.src(path.js)
@@ -26,7 +34,15 @@ gulp.task('build-html', function(){
 			.pipe(browserSync.reload({ stream: true }));
 });
 
-gulp.task('serve', ['build-js', 'build-html'], function(done) {
+gulp.task('build', function(callback){
+	return runSequence(
+		'clean',
+		['build-js', 'build-html'],
+		callback
+		);
+});
+
+gulp.task('serve', ['build'], function(done) {
   browserSync({
     open: false,
     port: 8000,
@@ -41,7 +57,7 @@ gulp.task('serve', ['build-js', 'build-html'], function(done) {
 });
 
 gulp.task('watch', ['serve'], function(){
-    gulp.watch([path.js, path.html], ['build-js', 'build-html']); 
+    gulp.watch([path.js, path.html], ['build']); 
 });
 
 gulp.task('default', ['serve']);
