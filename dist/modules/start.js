@@ -6,6 +6,7 @@ var Start = function Start(discoverRepository) {
   this.highestRatedMovies = [];
   this.apiKey = "";
   this.discoverRepository = discoverRepository;
+  this.count = 10;
 };
 
 Start.inject = function () {
@@ -25,14 +26,14 @@ Start.prototype.saveApiKey = function () {
 
 Start.prototype.loadPopularMovies = function () {
   var _this = this;
-  this.discoverRepository.getPopularMovies().then(function (movies) {
+  this.discoverRepository.getPopularMovies(this.count).then(function (movies) {
     return _this.popularMovies = movies;
   });
 };
 
 Start.prototype.loadHighestRatedMovies = function () {
   var _this2 = this;
-  this.discoverRepository.getHighestRatedMovies().then(function (movies) {
+  this.discoverRepository.getHighestRatedMovies(this.count).then(function (movies) {
     return _this2.highestRatedMovies = movies;
   });
 };

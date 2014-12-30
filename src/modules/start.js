@@ -2,11 +2,13 @@ import {DiscoverRepository} from '../repositories/discoverRepository';
 
 export class Start{
 	static inject() { return [DiscoverRepository]; }
+
 	constructor(discoverRepository){
 		this.popularMovies = [];
 		this.highestRatedMovies = [];	
 		this.apiKey = '';
 		this.discoverRepository = discoverRepository;
+		this.count = 10;
 	}
 
 	activate(){		
@@ -21,10 +23,10 @@ export class Start{
 	}
 
 	loadPopularMovies(){	
-		this.discoverRepository.getPopularMovies().then(movies => this.popularMovies = movies);	
+		this.discoverRepository.getPopularMovies(this.count).then(movies => this.popularMovies = movies);	
 	}
 
 	loadHighestRatedMovies(){	
-		this.discoverRepository.getHighestRatedMovies().then(movies => this.highestRatedMovies = movies);		
+		this.discoverRepository.getHighestRatedMovies(this.count).then(movies => this.highestRatedMovies = movies);		
 	}
 }

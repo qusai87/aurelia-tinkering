@@ -10,25 +10,27 @@ export class DiscoverRepository{
 		this.apiKey = localStorage.getItem('apiKey');
 	}
 
-	getPopularMovies(){
+	getPopularMovies(count = 20){
 
 		if(!this.apiKey){ return; }
 
 		let url = `${this.settings.baseUrl}/discover/movie?sort_by=popularity.desc&api_key=${this.apiKey}`;			
 
 	 	return	this.httpClient.get(url).then(x => {		
-			return JSON.parse(x.response).results;						
+			var results = JSON.parse(x.response).results;						
+			return results.slice(0, count);
 		});
 	};
 
-	getHighestRatedMovies(){
+	getHighestRatedMovies(count = 20){
 
 		if(!this.apiKey){ return; }	
 
 		let url = `${this.settings.baseUrl}/discover/movie?certification_country=US&certification=R&sort_by=vote_average.desc&api_key=${this.apiKey}`;
 
 		return	this.httpClient.get(url).then(x => {		
-			return JSON.parse(x.response).results;						
+			var results = JSON.parse(x.response).results;						
+			return results.slice(0, count);
 		});
 	}
 }

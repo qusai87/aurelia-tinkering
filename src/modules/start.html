@@ -9,7 +9,7 @@
 		<button type="submit" class="btn btn-primary">Save ApiKey</button>
 	</form>
 
-	<h3>Popular movies</h3>
+	<h3>Top ${count} Popular Movies</h3>
 	<table class="table table-striped">
 		<thead>	
 			<th>Title</th>
@@ -25,7 +25,7 @@
 		</tbody>
 	</table>
 
-	<h3>Highest rated movies</h3>
+	<h3>Top ${count} Highest Rated Movies</h3>
 	<table class="table table-striped">
 		<thead>	
 			<th>Title</th>
@@ -33,7 +33,7 @@
 			<th>Rating</th>
 		</thead>
 		<tbody>
-			<tr repeat.for="m of highestRatedMovies">			
+			<tr repeat.for="m of highestRatedMovies">					
 				<td>${m.title}</td>
 				<td>${m.release_date}</td>
 				<td>${m.vote_average}</td>	

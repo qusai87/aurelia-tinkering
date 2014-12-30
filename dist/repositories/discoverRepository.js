@@ -12,7 +12,10 @@ DiscoverRepository.inject = function () {
   return [HttpClient, Settings];
 };
 
-DiscoverRepository.prototype.getPopularMovies = function () {
+DiscoverRepository.prototype.getPopularMovies = function (count) {
+  if (count === undefined) count = 20;
+
+
   if (!this.apiKey) {
     return;
   }
@@ -20,11 +23,15 @@ DiscoverRepository.prototype.getPopularMovies = function () {
   var url = "" + this.settings.baseUrl + "/discover/movie?sort_by=popularity.desc&api_key=" + this.apiKey;
 
   return this.httpClient.get(url).then(function (x) {
-    return JSON.parse(x.response).results;
+    var results = JSON.parse(x.response).results;
+    return results.slice(0, count);
   });
 };
 
-DiscoverRepository.prototype.getHighestRatedMovies = function () {
+DiscoverRepository.prototype.getHighestRatedMovies = function (count) {
+  if (count === undefined) count = 20;
+
+
   if (!this.apiKey) {
     return;
   }
@@ -32,7 +39,8 @@ DiscoverRepository.prototype.getHighestRatedMovies = function () {
   var url = "" + this.settings.baseUrl + "/discover/movie?certification_country=US&certification=R&sort_by=vote_average.desc&api_key=" + this.apiKey;
 
   return this.httpClient.get(url).then(function (x) {
-    return JSON.parse(x.response).results;
+    var results = JSON.parse(x.response).results;
+    return results.slice(0, count);
   });
 };
 
