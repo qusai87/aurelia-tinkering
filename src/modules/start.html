@@ -17,7 +17,7 @@
 		</thead>
 		<tbody>
 			<tr repeat.for="m of popularMovies">			
-				<td>${m.title}</td>
+				<td><a href="/#/movies/${m.id}">${m.title}</a></td>
 				<td>${m.release_date}</td>
 				<td>${m.popularity}</td>	
 			</tr>
@@ -33,7 +33,7 @@
 		</thead>
 		<tbody>
 			<tr repeat.for="m of highestRatedMovies">					
-				<td>${m.title}</td>
+				<td><a href="/#/movies/${m.id}">${m.title}</a></td>
 				<td>${m.release_date}</td>
 				<td>${m.vote_average}</td>	
 			</tr>

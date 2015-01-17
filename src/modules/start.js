@@ -23,10 +23,12 @@ export class Start{
 	}
 
 	loadPopularMovies(){	
+		if(!this.apiKey){ return; }	
 		this.discoverRepository.getPopularMovies(this.count).then(movies => this.popularMovies = movies);	
 	}
 
 	loadHighestRatedMovies(){	
+		if(!this.apiKey){ return; }	
 		this.discoverRepository.getHighestRatedMovies(this.count).then(movies => this.highestRatedMovies = movies);		
 	}
 }

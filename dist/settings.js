@@ -5,15 +5,20 @@ var _prototypeProperties = function (child, staticProps, instanceProps) {
   if (instanceProps) Object.defineProperties(child.prototype, instanceProps);
 };
 
-var Settings = function Settings() {};
+var Settings = (function () {
+  function Settings() {}
 
-_prototypeProperties(Settings, null, {
-  baseUrl: {
-    get: function () {
-      return "https://api.themoviedb.org/3";
-    },
-    enumerable: true
-  }
-});
+  _prototypeProperties(Settings, null, {
+    baseUrl: {
+      get: function () {
+        return "https://api.themoviedb.org/3";
+      },
+      enumerable: true,
+      configurable: true
+    }
+  });
+
+  return Settings;
+})();
 
 exports.Settings = Settings;
