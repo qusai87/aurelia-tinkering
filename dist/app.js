@@ -11,7 +11,7 @@ var App = (function () {
     this.router = router;
     this.router.configure(function (config) {
       config.title = "Gusten Movie DB";
-      config.map([{ route: ["", "start"], moduleId: "modules/start", nav: true, title: "Start" }, { route: ["", "movies/:id"], moduleId: "modules/movies", nav: true, title: "Movies" }]);
+      config.map([{ route: ["", "start"], moduleId: "modules/start", nav: true, title: "Start" }, { route: ["", "genres"], moduleId: "modules/genres", nav: true, title: "Genres" }, { route: ["", "genres/:id"], moduleId: "modules/genre", nav: true, title: "Genre" }, { route: ["", "movies/:id"], moduleId: "modules/movies", nav: true, title: "Movies" }]);
     });
   }
 

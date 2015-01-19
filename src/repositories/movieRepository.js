@@ -12,7 +12,7 @@ export class MovieRepository{
 
   getById(id){
     let url = `${this.settings.baseUrl}/movie/${id}?api_key=${this.apiKey}`;     
-
+         
     return this.httpClient.get(url).then(response => {               
       return response.content;
     });

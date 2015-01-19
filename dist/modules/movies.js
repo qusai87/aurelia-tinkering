@@ -34,8 +34,9 @@ var Movies = (function () {
       value: function loadMovie(id) {
         var _this = this;
         return this.movieRepository.getById(id).then(function (movie) {
-          console.log(movie);
-          _this.title = movie.title;
+          _this.movie = movie;
+          _this.movie.release_date = _this.movie.release_date.substring(0, 4);
+          _this.movie.poster_path = "http://image.tmdb.org/t/p/w500" + _this.movie.poster_path;
           console.table(movie);
         });
       },

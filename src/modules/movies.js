@@ -14,8 +14,9 @@ export class Movies{
 
   loadMovie(id){
     return this.movieRepository.getById(id).then(movie => {
-      console.log(movie);
-      this.title = movie.title;
+      this.movie = movie;
+      this.movie.release_date = this.movie.release_date.substring(0, 4);
+      this.movie.poster_path = 'http://image.tmdb.org/t/p/w500' + this.movie.poster_path;
       console.table(movie);
     });
   }

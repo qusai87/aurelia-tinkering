@@ -1,0 +1,8 @@
+<template>
+  <h1>Genres</h1>
+  <ul>
+    <li repeat.for="genre of genres">
+      <a href="#/genres/${genre.id}">${genre.name}</a>
+    </li>
+  </ul>
+</template>
