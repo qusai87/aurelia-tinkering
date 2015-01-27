@@ -1,4 +1,4 @@
-import {HttpClient} from 'http-client';
+import {HttpClient} from 'aurelia-http-client';
 import {Settings} from '../settings';
 
 export class MovieRepository{

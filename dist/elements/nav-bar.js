@@ -5,15 +5,14 @@ var _prototypeProperties = function (child, staticProps, instanceProps) {
   if (instanceProps) Object.defineProperties(child.prototype, instanceProps);
 };
 
-var Property = require("aurelia-framework").Property;
+var Behavior = require("aurelia-framework").Behavior;
 var NavBar = (function () {
   function NavBar() {}
 
   _prototypeProperties(NavBar, {
-    annotations: {
-      value: function annotations() {
-        var prop = [new Property("router")];
-        return prop;
+    metadata: {
+      value: function metadata() {
+        return Behavior.withProperty("router");
       },
       writable: true,
       enumerable: true,

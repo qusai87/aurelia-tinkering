@@ -5,7 +5,7 @@ var _prototypeProperties = function (child, staticProps, instanceProps) {
   if (instanceProps) Object.defineProperties(child.prototype, instanceProps);
 };
 
-var HttpClient = require("http-client").HttpClient;
+var HttpClient = require("aurelia-http-client").HttpClient;
 var Settings = require("../settings").Settings;
 var DiscoverRepository = (function () {
   function DiscoverRepository(httpClient, settings) {

@@ -22,9 +22,9 @@
   "dependencies": {},
   "jspm": {
     "dependencies": {
-      "bootstrap": "github:twbs/bootstrap@^3.3.1",
-      "bootstrapper": "github:aurelia/bootstrapper@^0.5.2",
-      "http-client": "github:aurelia/http-client@^0.3.1"
+      "aurelia-bootstrapper": "^0.9.2",
+      "aurelia-http-client": "^0.4.3",
+      "bootstrap": "^3.3.2"
     }
   },
   "devDependencies": {
