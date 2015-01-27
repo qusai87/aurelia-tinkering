@@ -11,6 +11,7 @@ System.config({
 System.config({
   "map": {
     "aurelia-bootstrapper": "github:aurelia/bootstrapper@0.9.2",
+    "aurelia-event-aggregator": "github:aurelia/event-aggregator@0.2.2",
     "aurelia-http-client": "github:aurelia/http-client@0.4.3",
     "bootstrap": "github:twbs/bootstrap@3.3.2",
     "github:aurelia/binding@0.3.2": {

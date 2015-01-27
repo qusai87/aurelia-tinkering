@@ -1,20 +1,24 @@
 import {DiscoverRepository} from '../repositories/discoverRepository';
+import {EventAggregator} from 'aurelia-event-aggregator';
 
 export class Start{
-	static inject() { return [DiscoverRepository]; }
 
-	constructor(discoverRepository){
+	static inject() { return [DiscoverRepository, EventAggregator]; }
+
+	constructor(discoverRepository, eventAggregator){
 		this.popularMovies = [];
 		this.highestRatedMovies = [];	
 		this.apiKey = '';
 		this.discoverRepository = discoverRepository;
 		this.count = 10;
+		this.eventAggregator = eventAggregator;		
 	}
 
 	activate(){		
 		this.apiKey = localStorage.getItem('apiKey');
 		this.loadPopularMovies();
 		this.loadHighestRatedMovies();
+		this.subscribe();
 	}
 
 	saveApiKey(){
@@ -31,4 +35,11 @@ export class Start{
 		if(!this.apiKey){ return; }	
 		this.discoverRepository.getHighestRatedMovies(this.count).then(movies => this.highestRatedMovies = movies);		
 	}
+
+	subscribe(){
+		this.eventAggregator.subscribe('movieSearchEvent', searchText => {
+			console.log(searchText);
+		});
+	}
+
 }

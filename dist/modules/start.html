@@ -1,13 +1,5 @@
 <template>
 	<h1>Welcome</h1>
-	<form submit.delegate="saveApiKey()">
-		<div class="form-group">
-			<input type="text" class="form-control" placeholder="Enter your TMDB ApiKey" value.bind="apiKey" />
-			<small>To request an Api key, go to <a href="https://www.themoviedb.org">TheMovieDB.org</a></small>
-		</div>		
-		<button type="submit" class="btn btn-primary">Save ApiKey</button>
-	</form>
-
 	<h3>Top ${count} Popular Movies</h3>
 	<table class="table table-striped">
 		<thead>	
@@ -39,5 +31,13 @@
 			</tr>
 		</tbody>
 	</table>
+
+	<form submit.delegate="saveApiKey()">
+		<div class="form-group">
+			<input type="text" class="form-control" placeholder="Enter your TMDB ApiKey" value.bind="apiKey" />
+			<small>To request an Api key, go to <a href="https://www.themoviedb.org">TheMovieDB.org</a></small>
+		</div>		
+		<button type="submit" class="btn btn-primary">Save ApiKey</button>
+	</form>
 
 </template>

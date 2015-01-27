@@ -6,19 +6,21 @@ var _prototypeProperties = function (child, staticProps, instanceProps) {
 };
 
 var DiscoverRepository = require("../repositories/discoverRepository").DiscoverRepository;
+var EventAggregator = require("aurelia-event-aggregator").EventAggregator;
 var Start = (function () {
-  function Start(discoverRepository) {
+  function Start(discoverRepository, eventAggregator) {
     this.popularMovies = [];
     this.highestRatedMovies = [];
     this.apiKey = "";
     this.discoverRepository = discoverRepository;
     this.count = 10;
+    this.eventAggregator = eventAggregator;
   }
 
   _prototypeProperties(Start, {
     inject: {
       value: function inject() {
-        return [DiscoverRepository];
+        return [DiscoverRepository, EventAggregator];
       },
       writable: true,
       enumerable: true,
@@ -30,6 +32,7 @@ var Start = (function () {
         this.apiKey = localStorage.getItem("apiKey");
         this.loadPopularMovies();
         this.loadHighestRatedMovies();
+        this.subscribe();
       },
       writable: true,
       enumerable: true,
@@ -66,6 +69,16 @@ var Start = (function () {
         }
         this.discoverRepository.getHighestRatedMovies(this.count).then(function (movies) {
           return _this2.highestRatedMovies = movies;
+        });
+      },
+      writable: true,
+      enumerable: true,
+      configurable: true
+    },
+    subscribe: {
+      value: function subscribe() {
+        this.eventAggregator.subscribe("movieSearchEvent", function (searchText) {
+          console.log(searchText);
         });
       },
       writable: true,

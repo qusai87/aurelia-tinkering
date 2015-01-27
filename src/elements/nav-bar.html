@@ -19,9 +19,9 @@
 	      		<a href="${row.href}">${row.title}</a>
 	      	</li>	        
 	      </ul>
-	      <form class="navbar-form navbar-left" role="search">
+	      <form class="navbar-form navbar-left" submit.delegate="search()" role="search">
 	        <div class="form-group">
-	          <input type="text" class="form-control" placeholder="Enter movie or actor...">
+	          <input type="text" class="form-control" value.bind="searchText" placeholder="Enter movie or actor...">
 	        </div>
 	        <button type="submit" class="btn btn-default">Search</button>
 	      </form>	     
