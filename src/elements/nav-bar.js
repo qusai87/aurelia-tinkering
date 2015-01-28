@@ -8,12 +8,21 @@ export class NavBar {
   constructor(eventAggregator){
     this.searchText = '';
     this.eventAggregator = eventAggregator;
+    this.movieFavoriteCount = 0;
+    this.wireupSubscriptions();
   }
 
-  search(){
-    if(this.searchText){
-      this.eventAggregator.publish('movieSearchEvent', this.searchText);
-    }       
-  }
+  wireupSubscriptions(){
+    this.eventAggregator.subscribe('movieFavorited', movieFavObj => {
 
+      if(movieFavObj.fav){
+        this.movieFavoriteCount++;
+      }else{
+        this.movieFavoriteCount--;
+      }
+
+      
+      console.log(movieFavObj.movie);
+    });
+  }
 }

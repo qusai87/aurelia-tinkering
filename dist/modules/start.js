@@ -34,7 +34,6 @@ var Start = (function () {
         this.apiKey = localStorage.getItem("apiKey");
         this.loadPopularMovies();
         this.loadHighestRatedMovies();
-        this.subscribe();
       },
       writable: true,
       enumerable: true,
@@ -71,16 +70,6 @@ var Start = (function () {
         }
         this.discoverRepository.getHighestRatedMovies(this.count).then(function (movies) {
           return _this2.highestRatedMovies = movies;
-        });
-      },
-      writable: true,
-      enumerable: true,
-      configurable: true
-    },
-    subscribe: {
-      value: function subscribe() {
-        this.eventAggregator.subscribe("movieSearchEvent", function (searchText) {
-          console.log(searchText);
         });
       },
       writable: true,

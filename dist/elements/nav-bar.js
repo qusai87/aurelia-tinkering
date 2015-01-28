@@ -11,6 +11,8 @@ var NavBar = (function () {
   function NavBar(eventAggregator) {
     this.searchText = "";
     this.eventAggregator = eventAggregator;
+    this.movieFavoriteCount = 0;
+    this.wireupSubscriptions();
   }
 
   _prototypeProperties(NavBar, {
@@ -31,11 +33,19 @@ var NavBar = (function () {
       configurable: true
     }
   }, {
-    search: {
-      value: function search() {
-        if (this.searchText) {
-          this.eventAggregator.publish("movieSearchEvent", this.searchText);
-        }
+    wireupSubscriptions: {
+      value: function wireupSubscriptions() {
+        var _this = this;
+        this.eventAggregator.subscribe("movieFavorited", function (movieFavObj) {
+          if (movieFavObj.fav) {
+            _this.movieFavoriteCount++;
+          } else {
+            _this.movieFavoriteCount--;
+          }
+
+
+          console.log(movieFavObj.movie);
+        });
       },
       writable: true,
       enumerable: true,

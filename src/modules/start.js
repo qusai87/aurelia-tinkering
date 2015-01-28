@@ -19,8 +19,7 @@ export class Start{
 	activate(){		
 		this.apiKey = localStorage.getItem('apiKey');
 		this.loadPopularMovies();
-		this.loadHighestRatedMovies();
-		this.subscribe();
+		this.loadHighestRatedMovies();		
 	}
 
 	saveApiKey(){
@@ -36,12 +35,6 @@ export class Start{
 	loadHighestRatedMovies(){	
 		if(!this.apiKey){ return; }	
 		this.discoverRepository.getHighestRatedMovies(this.count).then(movies => this.highestRatedMovies = movies);		
-	}
-
-	subscribe(){
-		this.eventAggregator.subscribe('movieSearchEvent', searchText => {
-			console.log(searchText);
-		});
 	}
 
 }
