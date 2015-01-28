@@ -15,6 +15,8 @@ var Start = (function () {
     this.discoverRepository = discoverRepository;
     this.count = 10;
     this.eventAggregator = eventAggregator;
+    this.popularMoviesTitle = "Top " + this.count + " most popular movies";
+    this.highestRatedMoviesTitle = "Top " + this.count + " highest rated movies";
   }
 
   _prototypeProperties(Start, {

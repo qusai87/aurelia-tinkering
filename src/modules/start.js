@@ -12,6 +12,8 @@ export class Start{
 		this.discoverRepository = discoverRepository;
 		this.count = 10;
 		this.eventAggregator = eventAggregator;		
+		this.popularMoviesTitle = `Top ${this.count} most popular movies`;
+		this.highestRatedMoviesTitle = `Top ${this.count} highest rated movies`;
 	}
 
 	activate(){		
